@@ -1,0 +1,20 @@
+# generated videos
+*.mp4
+
+# audio renders
+*.mp3
+*.wav
+
+# temp folders
+temp_clips/
+temp/
+
+# generated images
+images/
+
+# output files
+output/
+
+# python cache
+__pycache__/
+*.pyc
