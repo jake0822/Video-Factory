@@ -1,6 +1,6 @@
 from google import genai
 
-API_KEY = "AIzaSyDvT_ujeSyNSGTm5f3qOawqV5aPMPZFHWk"
+API_KEY = "***"
 
 client = genai.Client(api_key=API_KEY)
 
@@ -22,7 +22,7 @@ def generate_searches(topic):
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         contents=prompt
     )
 

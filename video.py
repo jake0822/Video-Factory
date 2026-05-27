@@ -24,7 +24,7 @@ def build_video():
         print("NO IMAGES FOUND")
         return
 
-    max_images = 35
+    max_images = 21
 
     if len(image_files) > max_images:
         image_files = image_files[:max_images]
@@ -99,19 +99,21 @@ def build_video():
             "-y",
             "-loglevel", "error",
 
-            "-framerate", "24",
+            "-framerate", "60",
             "-loop", "1",
             "-i", image,
 
             "-vf",
 
-            (
-                "scale=-2:1440,"
-                "zoompan="
-                "z='zoom+0.00025':"
-                f"d={int(duration_per_image * 24)}:"
-                "s=2560x1440:fps=24"
-            ),
+             (
+            "scale=2560:1440:force_original_aspect_ratio=decrease,"
+            "zoompan="
+            "z='min(zoom+0.00010,1.3)':"
+            f"d={int(duration_per_image * 60)}:"
+            "fps=60:"
+            "s=2560x1440,"
+            "setsar=1"
+        ),
 
             "-t",
             str(duration_per_image),
@@ -121,6 +123,10 @@ def build_video():
 
             "-pix_fmt",
             "yuv420p",
+            
+
+            "-movflags",
+            "+faststart",
 
             output_clip
         ]
